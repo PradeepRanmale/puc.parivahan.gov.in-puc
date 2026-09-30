@@ -1,0 +1,807 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head id="j_idt2">
+
+    <meta charset="UTF-8" />
+
+    <title>Vehicle Details</title>
+
+    <style type="text/css">
+
+        /* =========================================================
+           PAGE
+           ========================================================= */
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 100%;
+            background-color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #222222;
+        }
+
+        body {
+            box-sizing: border-box;
+        }
+
+        *,
+        *:before,
+        *:after {
+            box-sizing: border-box;
+        }
+
+
+        /* =========================================================
+           MAIN CERTIFICATE CONTAINER
+           ========================================================= */
+
+        .cert-container {
+            width: calc(100% - 84px);
+            margin: 0 42px;
+            padding: 0 0 30px 0;
+            background-color: #ffffff;
+        }
+
+
+        /* =========================================================
+           HEADER
+           ========================================================= */
+
+        .cert-header {
+            width: 100%;
+            text-align: center;
+            border-bottom: 2px solid #dddddd;
+            padding-top: 28px;
+            padding-bottom: 25px;
+            margin-bottom: 40px;
+        }
+
+        .cert-header h2 {
+            margin: 0;
+            padding: 0;
+
+            color: #2c3e50;
+
+            font-size: 42px;
+            line-height: 1.15;
+            font-weight: 700;
+
+            text-transform: uppercase;
+            letter-spacing: 0;
+
+            white-space: nowrap;
+        }
+
+
+        /* =========================================================
+           SECTION TITLES
+           ========================================================= */
+
+        .section-title {
+            width: 100%;
+
+            background-color: #f7f8f9;
+
+            border-left: 6px solid #4285bd;
+            border-radius: 6px;
+
+            padding: 19px 24px;
+
+            margin-top: 0;
+            margin-bottom: 27px;
+
+            color: #2c3e50;
+
+            font-size: 25px;
+            line-height: 1.2;
+            font-weight: 600;
+        }
+
+
+        /* =========================================================
+           PANEL GRID
+           ========================================================= */
+
+        .ui-panelgrid {
+            width: 100%;
+            margin-bottom: 39px;
+        }
+
+        .ui-panelgrid-content {
+            width: 100%;
+            padding: 0;
+            border: 0;
+            background: transparent;
+        }
+
+        .ui-grid-row {
+            width: 100%;
+            display: flex;
+            flex-wrap: nowrap;
+
+            margin: 0;
+            padding: 0;
+        }
+
+        .ui-panelgrid-cell {
+            min-height: 45px;
+            padding: 0 15px;
+
+            display: flex;
+            align-items: flex-start;
+        }
+
+        /*
+         * Four columns:
+         * Label      = 25%
+         * Value      = 25%
+         * Label      = 25%
+         * Value      = 25%
+         */
+
+        .ui-grid-col-3 {
+            width: 25%;
+            flex: 0 0 25%;
+        }
+
+
+        /* =========================================================
+           GENERAL INFORMATION / FIELD LABELS
+           ========================================================= */
+
+        .field-label {
+            display: block;
+
+            color: #555555;
+
+            font-size: 25px;
+            line-height: 1.25;
+            font-weight: 700;
+
+            margin: 0;
+            padding: 0;
+        }
+
+        .field-value {
+            display: block;
+
+            color: #222222;
+
+            font-size: 25px;
+            line-height: 1.25;
+            font-weight: 500;
+
+            margin: 0;
+            padding: 0;
+        }
+
+
+        /* =========================================================
+           POLLUTION STATUS
+           ========================================================= */
+
+        .puc-status-yes {
+            display: block;
+
+            color: #27ae60;
+
+            font-size: 25px;
+            line-height: 1.25;
+            font-weight: 700;
+
+            margin: 0;
+            padding: 0;
+        }
+
+        .puc-status-no {
+            display: block;
+
+            color: #c0392b;
+
+            font-size: 25px;
+            line-height: 1.25;
+            font-weight: 700;
+
+            margin: 0;
+            padding: 0;
+        }
+
+
+        /* =========================================================
+           EMISSION TEST TABLE
+           ========================================================= */
+
+        .result-table {
+            width: 100%;
+
+            margin: 0;
+            padding: 0;
+
+            border-collapse: collapse;
+            border-spacing: 0;
+
+            table-layout: fixed;
+
+            font-size: 25px;
+        }
+
+
+        /* ---------------------------------------------------------
+           COLUMN WIDTHS
+           --------------------------------------------------------- */
+
+        .result-table col.parameter-column {
+            width: 40%;
+        }
+
+        .result-table col.prescribed-column {
+            width: 30%;
+        }
+
+        .result-table col.measured-column {
+            width: 30%;
+        }
+
+
+        /* ---------------------------------------------------------
+           TABLE HEADER
+           --------------------------------------------------------- */
+
+        .result-table thead tr {
+            height: 72px;
+        }
+
+        .result-table th {
+            height: 72px;
+
+            padding: 15px 20px;
+
+            background-color: #4285bd;
+            color: #ffffff;
+
+            border: 1px solid #d5d5d5;
+
+            text-align: center;
+            vertical-align: middle;
+
+            font-size: 25px;
+            line-height: 1.2;
+            font-weight: 600;
+        }
+
+
+        /* ---------------------------------------------------------
+           TABLE BODY
+           --------------------------------------------------------- */
+
+        .result-table tbody tr {
+            height: 80px;
+        }
+
+        .result-table td {
+            height: 80px;
+
+            padding: 15px 20px;
+
+            background-color: #ffffff;
+
+            border: 1px solid #d5d5d5;
+
+            color: #333333;
+
+            text-align: center;
+            vertical-align: middle;
+
+            font-size: 25px;
+            line-height: 1.3;
+            font-weight: 400;
+        }
+
+
+        /* ---------------------------------------------------------
+           PARAMETER COLUMN
+           --------------------------------------------------------- */
+
+        .result-table td.parameter {
+            text-align: left;
+            padding-left: 30px;
+            padding-right: 25px;
+        }
+
+        .result-table td.parameter label {
+            display: block;
+
+            text-align: left;
+
+            font-size: 25px;
+            line-height: 1.25;
+            font-weight: 400;
+        }
+
+
+        /* ---------------------------------------------------------
+           VALUE COLUMNS
+           --------------------------------------------------------- */
+
+        .result-table td.value {
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .result-table td.value label {
+            display: block;
+
+            text-align: center;
+
+            font-size: 25px;
+            line-height: 1.2;
+            font-weight: 400;
+        }
+
+
+        /* =========================================================
+           RESPONSIVE BEHAVIOUR
+           ========================================================= */
+
+        @media screen and (max-width: 1100px) {
+
+            .cert-container {
+                width: calc(100% - 50px);
+                margin: 0 25px;
+            }
+
+            .cert-header h2 {
+                font-size: 34px;
+            }
+
+            .field-label,
+            .field-value,
+            .puc-status-yes,
+            .puc-status-no,
+            .result-table,
+            .result-table th,
+            .result-table td,
+            .result-table td.parameter label,
+            .result-table td.value label {
+                font-size: 20px;
+            }
+
+            .section-title {
+                font-size: 21px;
+            }
+        }
+
+
+        @media screen and (max-width: 700px) {
+
+            .cert-container {
+                width: calc(100% - 30px);
+                margin: 0 15px;
+            }
+
+            .cert-header {
+                padding-top: 20px;
+                padding-bottom: 18px;
+                margin-bottom: 25px;
+            }
+
+            .cert-header h2 {
+                font-size: 25px;
+                white-space: normal;
+            }
+
+            .section-title {
+                font-size: 18px;
+                padding: 14px 18px;
+                margin-bottom: 20px;
+            }
+
+            .ui-grid-row {
+                flex-wrap: wrap;
+            }
+
+            .ui-grid-col-3 {
+                width: 50%;
+                flex: 0 0 50%;
+                margin-bottom: 15px;
+            }
+
+            .field-label,
+            .field-value,
+            .puc-status-yes,
+            .puc-status-no,
+            .result-table,
+            .result-table th,
+            .result-table td,
+            .result-table td.parameter label,
+            .result-table td.value label {
+                font-size: 15px;
+            }
+
+            .result-table th {
+                height: 55px;
+                padding: 10px;
+            }
+
+            .result-table td {
+                height: 65px;
+                padding: 10px;
+            }
+
+            .result-table td.parameter {
+                padding-left: 15px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+<div class="cert-container">
+
+    <!-- =========================================================
+         HEADER
+         ========================================================= -->
+
+    <div class="cert-header">
+        <h2>Pollution Under Control Certificate</h2>
+    </div>
+
+
+    <form id="j_idt6"
+          name="j_idt6"
+          method="post"
+          action="/puc/views/PucCertificateDetails.xhtml"
+          enctype="application/x-www-form-urlencoded">
+
+        <input type="hidden"
+               name="j_idt6"
+               value="j_idt6" />
+
+
+        <!-- =====================================================
+             GENERAL INFORMATION
+             ===================================================== -->
+
+        <div class="section-title">
+            General Information
+        </div>
+
+
+        <div id="j_idt6:j_idt8"
+             class="ui-panelgrid ui-widget ui-panelgrid-blank ui-fluid">
+
+            <div id="j_idt6:j_idt8_content"
+                 class="ui-panelgrid-content ui-widget-content ui-grid ui-grid-responsive">
+
+
+                <!-- ROW 1 -->
+
+                <div class="ui-grid-row">
+
+                    <div class="ui-panelgrid-cell ui-grid-col-3">
+                        <label id="j_idt6:j_idt9"
+                               class="ui-outputlabel ui-widget field-label">
+                            Registration Number:
+                        </label>
+                    </div>
+
+                    <div class="ui-panelgrid-cell ui-grid-col-3">
+                        <label id="j_idt6:j_idt10"
+                               class="ui-outputlabel ui-widget field-value">
+                            MH14EH1047
+                        </label>
+                    </div>
+
+                    <div class="ui-panelgrid-cell ui-grid-col-3">
+                        <label id="j_idt6:j_idt11"
+                               class="ui-outputlabel ui-widget field-label">
+                            Certificate Number:
+                        </label>
+                    </div>
+
+                    <div class="ui-panelgrid-cell ui-grid-col-3">
+                        <label id="j_idt6:j_idt12"
+                               class="ui-outputlabel ui-widget field-value">
+                            MH01210010029115
+                        </label>
+                    </div>
+
+                </div>
+
+
+                <!-- ROW 2 -->
+
+                <div class="ui-grid-row">
+
+                    <div class="ui-panelgrid-cell ui-grid-col-3">
+                        <label id="j_idt6:j_idt13"
+                               class="ui-outputlabel ui-widget field-label">
+                            Center Code:
+                        </label>
+                    </div>
+
+                    <div class="ui-panelgrid-cell ui-grid-col-3">
+                        <label id="j_idt6:j_idt14"
+                               class="ui-outputlabel ui-widget field-value">
+                            MH0121001
+                        </label>
+                    </div>
+
+                    <div class="ui-panelgrid-cell ui-grid-col-3">
+                        <label id="j_idt6:j_idt15"
+                               class="ui-outputlabel ui-widget field-label">
+                            Vehicle Type:
+                        </label>
+                    </div>
+
+                    <div class="ui-panelgrid-cell ui-grid-col-3">
+                        <label id="j_idt6:j_idt16"
+                               class="ui-outputlabel ui-widget field-value">
+                            DIESEL DRIVEN<br />
+                            VEHICLES
+                        </label>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+             VALIDITY & STATUS
+             ===================================================== -->
+
+        <div class="section-title">
+            Validity &amp; Status
+        </div>
+
+
+        <div id="j_idt6:j_idt18"
+             class="ui-panelgrid ui-widget ui-panelgrid-blank ui-fluid">
+
+            <div id="j_idt6:j_idt18_content"
+                 class="ui-panelgrid-content ui-widget-content ui-grid ui-grid-responsive">
+
+
+                <!-- ROW 1 -->
+
+                <div class="ui-grid-row">
+
+                    <div class="ui-panelgrid-cell ui-grid-col-3">
+                        <label id="j_idt6:j_idt20"
+                               class="ui-outputlabel ui-widget field-label">
+                            Test Date:
+                        </label>
+                    </div>
+
+                    <div class="ui-panelgrid-cell ui-grid-col-3">
+                        <label id="j_idt6:j_idt22"
+                               class="ui-outputlabel ui-widget field-value">
+                            01-Oct-2026
+                        </label>
+                    </div>
+
+                    <div class="ui-panelgrid-cell ui-grid-col-3">
+                        <label id="j_idt6:j_idt24"
+                               class="ui-outputlabel ui-widget field-label">
+                            Valid Upto:
+                        </label>
+                    </div>
+
+                    <div class="ui-panelgrid-cell ui-grid-col-3">
+                        <label id="j_idt6:j_idt26"
+                               class="ui-outputlabel ui-widget field-value">
+                            31-Mar-2027
+                        </label>
+                    </div>
+
+                </div>
+
+
+                <!-- ROW 2 -->
+
+                <div class="ui-grid-row">
+
+                    <div class="ui-panelgrid-cell ui-grid-col-3">
+                        <label id="j_idt6:j_idt27"
+                               class="ui-outputlabel ui-widget field-label">
+                            Fees:
+                        </label>
+                    </div>
+
+                    <div class="ui-panelgrid-cell ui-grid-col-3">
+                        <label id="j_idt6:j_idt28"
+                               class="ui-outputlabel ui-widget field-value">
+                            ₹ 0.0
+                        </label>
+                    </div>
+
+                    <div class="ui-panelgrid-cell ui-grid-col-3">
+                        <label id="j_idt6:j_idt29"
+                               class="ui-outputlabel ui-widget field-label">
+                            Pollution under<br />
+                            control:
+                        </label>
+                    </div>
+
+                    <div class="ui-panelgrid-cell ui-grid-col-3">
+                        <label id="j_idt6:j_idt30"
+                               class="ui-outputlabel ui-widget puc-status-yes">
+                            YES
+                        </label>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+             EMISSION TEST RESULTS
+             ===================================================== -->
+
+        <div class="section-title">
+            Emission Test Results
+        </div>
+
+
+        <table class="result-table">
+
+            <colgroup>
+
+                <col class="parameter-column" />
+
+                <col class="prescribed-column" />
+
+                <col class="measured-column" />
+
+            </colgroup>
+
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        Parameter
+                    </th>
+
+                    <th>
+                        Prescribed Value
+                    </th>
+
+                    <th>
+                        Measured Value
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                <!-- =================================================
+                     ROW 1
+                     ================================================= -->
+
+                <tr>
+
+                    <td class="parameter">
+
+                        <label id="j_idt6:j_idt34"
+                               class="ui-outputlabel ui-widget">
+
+                            Light Absorption Coefficient
+                            <br />
+                            (Permissible Limit)
+
+                        </label>
+
+                    </td>
+
+
+                    <td class="value">
+
+                        <label id="j_idt6:j_idt36"
+                               class="ui-outputlabel ui-widget">
+
+                            2.45
+
+                        </label>
+
+                    </td>
+
+
+                    <td class="value">
+
+                        <label id="j_idt6:j_idt38"
+                               class="ui-outputlabel ui-widget">
+
+                            0.47
+
+                        </label>
+
+                    </td>
+
+                </tr>
+
+
+                <!-- =================================================
+                     ROW 2
+                     ================================================= -->
+
+                <tr>
+
+                    <td class="parameter">
+
+                        <label id="j_idt6:j_idt42"
+                               class="ui-outputlabel ui-widget">
+
+                            Hartridge Unit (Permissible Limit)
+
+                        </label>
+
+                    </td>
+
+
+                    <td class="value">
+
+                        <label id="j_idt6:j_idt44"
+                               class="ui-outputlabel ui-widget">
+
+                            0.0
+
+                        </label>
+
+                    </td>
+
+
+                    <td class="value">
+
+                        <label id="j_idt6:j_idt46"
+                               class="ui-outputlabel ui-widget">
+
+                            0.0
+
+                        </label>
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+
+        <!-- =====================================================
+             JSF VIEW STATE
+             ===================================================== -->
+
+        <input type="hidden"
+               name="javax.faces.ViewState"
+               id="j_id1:javax.faces.ViewState:0"
+               value="622784901319408955:8354066465360838137"
+               autocomplete="off" />
+
+    </form>
+
+</div>
+
+</body>
+
+</html>
